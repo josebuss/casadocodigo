@@ -13,7 +13,7 @@ public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 
 	private String titulo;
 
@@ -24,7 +24,7 @@ public class Produto {
 	@ElementCollection
 	private List<Preco> precos;
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
