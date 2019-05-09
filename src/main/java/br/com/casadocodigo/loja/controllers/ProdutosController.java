@@ -18,30 +18,29 @@ import br.com.casadocodigo.loja.models.TipoPreco;
 import br.com.casadocodigo.loja.validator.ProdutoValidator;
 
 @Controller
-@RequestMapping("produtos")
+@RequestMapping("/produtos")
 public class ProdutosController {
 	
 	@Autowired
 	private ProdutoDAO dao;
 	
 	@RequestMapping("form")
-	public ModelAndView form() {
+	public ModelAndView form(Produto produto) {
 		ModelAndView modelAndView = new ModelAndView("produtos/form");
 		modelAndView.addObject("tipos", TipoPreco.values());
 		return modelAndView; 
 	}
 
 	@RequestMapping(method=RequestMethod.POST)
-	public String gravar(@Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes) {
-		System.out.println(produto.toString());
-		
+	public ModelAndView gravar(@Valid Produto produto, BindingResult result, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
-			form();
+			return form(produto);
 		}
+		System.out.println(produto.toString());
 		
 		dao.gravar(produto);
 		redirectAttributes.addFlashAttribute("mensagem", "Produto casdatrado com sucesso!");
-		return "redirect:produtos";
+		return new ModelAndView("redirect:produtos");
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)

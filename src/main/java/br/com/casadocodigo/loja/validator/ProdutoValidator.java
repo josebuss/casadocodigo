@@ -14,11 +14,11 @@ public class ProdutoValidator implements Validator {
 	}
 
 	@Override
-	public void validate(Object target, Errors errors) {
-		Produto produto = (Produto) target;
+	public void validate(Object target, Errors errors) {		
+		ValidationUtils.rejectIfEmpty(errors, "titulo", "field.required");
+		ValidationUtils.rejectIfEmpty(errors, "descricao", "field.required");
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titulo", "field.required");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descricao", "field.required");
+		Produto produto = (Produto) target;
 		if (produto.getPaginas() == null || produto.getPaginas() <= 0) {
 			errors.rejectValue("paginas", "field.required");
 		}		

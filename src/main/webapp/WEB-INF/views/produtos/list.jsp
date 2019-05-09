@@ -20,8 +20,11 @@
 			<tr>
 				<td>${produto.id}</td>
 				<td>${produto.titulo}</td>
-				<td>${produto.descricao}</td>
 				<td>${produto.paginas}</td>
+				<!-- 
+				<td>${produto.dataLancamento}</td>
+				 -->
+				<td>${produto.descricao}</td>
 			</tr>
 		</c:forEach>
 	</table>

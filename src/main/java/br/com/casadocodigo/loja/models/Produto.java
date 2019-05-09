@@ -1,5 +1,7 @@
 package br.com.casadocodigo.loja.models;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -7,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Produto {
@@ -17,9 +22,13 @@ public class Produto {
 
 	private String titulo;
 
+	@Lob
 	private String descricao;
 
 	private Integer paginas;
+
+	@DateTimeFormat
+	private Calendar dataLancamento;
 
 	@ElementCollection
 	private List<Preco> precos;
@@ -28,7 +37,7 @@ public class Produto {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -56,6 +65,14 @@ public class Produto {
 		this.paginas = paginas;
 	}
 
+	public Calendar getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public void setDataLancamento(Calendar dataLancamento) {
+		this.dataLancamento = dataLancamento;
+	}
+
 	public List<Preco> getPrecos() {
 		return precos;
 	}
@@ -66,10 +83,7 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [titulo=" + titulo 
-				+ ", descricao=" + descricao 
-				+ ", paginas=" + paginas 
-				+ ", precos=" + precos
+		return "Produto [titulo=" + titulo + ", descricao=" + descricao + ", paginas=" + paginas + ", precos=" + precos
 				+ "]";
 	}
 }
