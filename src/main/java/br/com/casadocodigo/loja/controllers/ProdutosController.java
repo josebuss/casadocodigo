@@ -49,7 +49,7 @@ public class ProdutosController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView listar() {
-		ModelAndView modelAndView = new ModelAndView("produtos/list");
+		ModelAndView modelAndView = new ModelAndView("produtos/lista");
 		modelAndView.addObject("produtos", dao.listar());
 		return modelAndView;
 	}

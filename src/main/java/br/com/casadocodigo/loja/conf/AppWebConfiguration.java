@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @ComponentScan(basePackages = { "br.com.casadocodigo.loja" })
-// basePackageClasses = { HomeController.class, ProdutoDAO.class, FileSaver.class
+// basePackageClasses = { HomeController.class, ProdutoDAO.class, FileSaver.class, CarrinhoCompras.class
 public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 
 	@Bean
@@ -25,6 +25,9 @@ public class AppWebConfiguration extends WebMvcConfigurerAdapter {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
 		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
+		
+//		resolver.setExposeContextBeansAsAttributes(true);
+		resolver.setExposedContextBeanNames("carrinhoCompras");
 
 		return resolver;
 	}
