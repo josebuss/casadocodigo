@@ -36,6 +36,14 @@ public class Produto {
 	private List<Preco> precos;
 	
 	private String sumarioPath;
+	
+	public Produto(Integer id) {
+		super();
+		this.id = id;
+	}
+	
+	public Produto() {
+	}
 
 	public Integer getId() {
 		return id;
